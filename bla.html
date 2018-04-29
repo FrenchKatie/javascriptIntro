@@ -16,14 +16,14 @@
     <script type="text/javascript">
 
     function doSomething(){
-      var getId = document.getElementById('domHeader');
+      var getId = document.getElementById('domHeader'); //must use ; as it signifies a . or end of a line
       console.dir(getId.textContent = 'bla'); //Getting the content out of the element
       getId.style.color = 'pink';
 
       var textA = 'my name is ';
       var textB = 'katie';
       console.log(textA + textB);
-    }
+    } //dont need ; on the end of a } /function
   //call the function to action
     setTimeout(doSomething, 5000); //5000 milliseconds = 5 seconds
 
