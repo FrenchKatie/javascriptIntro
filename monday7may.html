@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <form class="" action="index.html" method="post">
+      Type Something <input type="text" name="fName" id="anInput">
+      <button type="button" name="button" id="trigger" style="margin-top: 2.5em">Trigger</button>
+    </form>
+
+    <p id="input"></p>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+//*** Two ways to write functions ***
+
+
+      //Declaring a basic function
+      // function aBasicFunctionDeclaration () {
+        // alert("I am a function declaration");
+      // }
+      //Here we are invoking our basic function.
+      //A basic function can be called from anywhere - even above the function declaration
+      // aBasicFunctionDeclaration();
+
+
+
+      //A function expression
+      //Writing a function this way stores things into a variable
+      // var aFunctionExpression = function (){
+      //   alert("This is a function expression");
+      // }
+      //Here we are invoking our function expression.
+      //You can only call a function expression AFTER it has been written
+      // aFunctionExpression();
+
+      //Calling a function expression
+      // var aFunctionExpression = function (){
+      //   alert("This is a function expression");
+      // }(); //By adding brackets and semi colon at the end this invokes the function!!!
+
+
+
+      //Arrow functions
+      // ()=>{
+      //
+      // }
+
+
+
+//*** Constructor function: ***
+      // function Hotel(name,rooms){ //Constructor funtions will always have a capital letter for the function name
+      //   this.name = name; //applying properties to a constructor
+      //   this.rooms = rooms;
+      // }
+      //
+      // var hotel1 = new Hotel("Quay", 40); //by using the word "new" this signifies that it is a new object from the constructor
+      // var hotel2 = new Hotel("Park", 120);
+      //
+      // console.log(hotel1);
+
+
+
+
+//*** Growing and deleting objects with .Notation: ***
+
+      // var a = "a string";
+      // var myArray = [22, 15];
+      // var person = {
+      //   firstName: "katie" // this line is called an "initial notation"
+      // };
+      // var torf = false
+      // person.age = 22; //using a ".notation" to add properties.
+      // person.lastName = "smith";
+      //
+      // delete person.firstName; //deleteing an object using notation
+      //
+      // console.log(typeof person); //Use type of - to log the type of element that you are working with.n
+
+
+
+
+
+//*** Adding and removing items from an array ***
+      //You have to use push if you are working with an array specifically
+
+      // var fruits = ["Banana", "Orange", "Apple", "Mango"];
+      // fruits.push("Kiwi"); //Adds a new element "Kiwi" to the array.  Push is a method
+      // console.log(fruits);
+
+
+
+
+
+//*** Using the users inputted information ***
+      // $(document).ready(function(){ //When the page loads
+      //   $("#trigger").click(function(){ //Action the following when the button is clicked
+      //     var getValue = document.getElementById("anInput").value; //log the value of the text input everytime the submit button is clicked
+      //     var getNumber = parseInt(getValue); //changing the users input if it is a number and changing it from a string to a number format
+      //     console.log(getValue); //log the text inputted in the console
+      //     // console.log(typeof getValue); //checking what the input is - string, number?  Learnt that it comes out as a string result by default.  We change this using parseInt and turn it into a number
+      //     console.dir(typeof getNumber); //checking if our parseInt method worked - it has! Comes out as "number" in our console
+      //
+      //
+      //     if (getValue === "something"){ //this if else function reads the text from the user input - can go in any direction you want based on what the user types
+      //       alert("hello");
+      //     }else{ //this is called a code block - use of two curly brackets like this
+      //       alert("goodbye");
+      //     }
+      //   })
+      // })
+
+
+
+
+
+//*** Using if and else statements ***
+      // $(document).ready(function(){ //When the page loads
+      //   $("#trigger").click(function(){ //Action the following when the button is clicked
+      //
+      //     var getValue = document.getElementById("anInput"); //trying to find this element in the dom
+      //     var trueVal = 2;
+      //
+      //     // var falseVal = false;
+      //     //truthy // falsy
+      //     //somethings by default carry a value of true or false
+      //     //You can assign "true" and "false" sepcifically to a variable
+      //     //two dimensional switch statement - if else statement
+      //     if (trueVal){ //no need to have "trueVal === true" as we have definded it as "true" as a boolean already.  This statement is saying if trueVal exists then go do something
+      //       console.log("it's true");
+      //     }else{
+      //       console.log("it's false");
+      //     }
+      //   })
+      // })
+
+
+
+
+
+//*** Growing our arrays memory using push ***
+            // $(document).ready(function(){ //When the page loads action the following:
+            //
+            //   var storageArray = []; //when clicked the information in the text input will be saved to the storageArray. The more times the button is submitted the more items you will have in your array
+            //
+            //   $("#trigger").click(function(){ //Action the following function when the button is clicked
+            //     var getValue = document.getElementById("anInput").value; //trying to find this element in the dom to define getValue.  It is the text input of our form
+            //     storageArray.push(getValue); //grab the value typed in by user and push it into the array
+            //     console.log(storageArray); //logging your array in the console
+            //   });
+            // });
+
+
+
+
+//*** Shrinking our arrays memory using pop ***
+            // $(document).ready(function(){ //When the page loads action the following:
+            //
+            //   var storageArray = []; //when clicked the information in the text input will be saved to the storageArray. The more times the button is submitted the more items you will have in your array
+            //
+            //   $("#trigger").click(function(){ //Action the following function when the button is clicked
+            //     var getValue = document.getElementById("anInput").value;
+            //     if(getValue === "remove"){
+            //       storageArray.pop(); //removes the last element in the array
+            //       alert("ahhhhh")
+            //     }else{
+            //       storageArray.push(getValue); //grab the value typed in by user and push it into the array
+            //     }
+            //     console.log(storageArray);
+            //   });
+            // });
+
+    </script>
+  </body>
+</html>
