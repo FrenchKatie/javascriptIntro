@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Question Checkpoint</title>
+    <style media="screen">
+      body{
+        font-family: helvetica;
+        padding: 20px;
+        text-align: center;
+        box-sizing:  border-box;
+      }
+      form input{
+        line-height: 30px;
+        font-size: 20px;
+        width: 100%;
+        padding: 15px;
+      }
+      form input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 30px white inset;
+      }
+      h1{
+        font-size: 50px;
+        margin-bottom: 100px;
+      }
+      .question{
+        width: 80%;
+        text-align: center;
+        margin: auto;
+      }
+      .questionTitle{
+        font-weight: 400;
+      }
+      .submitButton{
+        border: none;
+        font-size: 20px;
+        background-color: grey;
+        color: white;
+        border-radius: 0;
+        width: 50%;
+        padding: 20px;
+        margin-top: 20px;
+        font-weight: 300;
+      }
+      .correct{
+        background-color: #26de81;
+        color: white;
+        font-weight: 300;
+        padding: 20px;
+        width: 100%;
+      }
+      .incorrect{
+        background-color: #fc5c65;
+        color: white;
+        font-weight: 300;
+        padding: 20px;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Geography Questionnaire</h1>
+    <form class="" action="index.html" method="post">
+      <div class="question">
+        <h2 class="questionTitle">What is the capital of New Zealand?</h2>
+        <input type="text" name="userInput" id="userInput" placeholder="Enter your answer here...">
+        <br>
+        <h3 id="result"></h3>
+        <button type="button" name="button" class="submitButton" id="submit">Submit Answer</button>
+      </div>
+    </form>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+
+        function checkAnswer(){
+
+          $("#submit").click(function(){
+
+              var getUserInput = document.getElementById("userInput").value;
+              console.log(getUserInput)
+
+              if (getUserInput === "wellington"){
+                  //grab h3 and add class of correct to it
+                  $('#result').addClass('correct');
+                  //removes the class inorrect in case they got it wrong first and then changed it to correct
+                  $('#result').removeClass('incorrect');
+                  //log the h3 in the console to check working and if class was added to html
+                  console.log(result);
+                  //user inner.html to add congratulations text and a correct tick
+                  document.getElementById("result").innerHTML = "<i class='far fa-check-circle'></i> " + "Congratulations! You got the right answer.";
+              }else{
+                  //grab h3 and add class of incorrect to it
+                  $('#result').addClass('incorrect');
+                  //removes the class correct in case they got it right first and then changed it to incorrect
+                  $('#result').removeClass('correct');
+                  //log the h3 in the console to check working and if class was added to html
+                  console.log(result);
+                  //user inner.html to add sorry text and a cross
+                  document.getElementById("result").innerHTML = "<i class='far fa-times-circle'></i> " + "Sorry! That's not the right answer.";
+              }//end else
+
+
+
+          }) //end click submit function
+        } //end checkAnswer function
+        checkAnswer();
+      }) //end doc ready
+
+
+    </script>
+  </body>
+</html>

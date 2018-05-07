@@ -97,22 +97,22 @@
 
 
 //*** Using the users inputted information ***
-      // $(document).ready(function(){ //When the page loads
-      //   $("#trigger").click(function(){ //Action the following when the button is clicked
-      //     var getValue = document.getElementById("anInput").value; //log the value of the text input everytime the submit button is clicked
-      //     var getNumber = parseInt(getValue); //changing the users input if it is a number and changing it from a string to a number format
-      //     console.log(getValue); //log the text inputted in the console
-      //     // console.log(typeof getValue); //checking what the input is - string, number?  Learnt that it comes out as a string result by default.  We change this using parseInt and turn it into a number
-      //     console.dir(typeof getNumber); //checking if our parseInt method worked - it has! Comes out as "number" in our console
-      //
-      //
-      //     if (getValue === "something"){ //this if else function reads the text from the user input - can go in any direction you want based on what the user types
-      //       alert("hello");
-      //     }else{ //this is called a code block - use of two curly brackets like this
-      //       alert("goodbye");
-      //     }
-      //   })
-      // })
+      $(document).ready(function(){ //When the page loads
+        $("#trigger").click(function(){ //Action the following when the button is clicked
+          var getValue = document.getElementById("anInput").value; //log the value of the text input everytime the submit button is clicked
+          var getNumber = parseInt(getValue); //changing the users input if it is a number and changing it from a string to a number format
+          console.log(getValue); //log the text inputted in the console
+          // console.log(typeof getValue); //checking what the input is - string, number?  Learnt that it comes out as a string result by default.  We change this using parseInt and turn it into a number
+          console.dir(typeof getNumber); //checking if our parseInt method worked - it has! Comes out as "number" in our console
+
+
+          if (getValue === "something"){ //this if else function reads the text from the user input - can go in any direction you want based on what the user types
+            alert("hello");
+          }else{ //this is called a code block - use of two curly brackets like this
+            alert("goodbye");
+          }
+        })
+      })
 
 
 

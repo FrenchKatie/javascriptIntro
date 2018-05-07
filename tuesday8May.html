@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tuesday 8th May - Class work</title>
+    <style>
+      html, body{
+        font-size: 16px;
+        background-color: pink;
+        height: 1000;
+      }
+      ul{
+        list-style-type: none;
+      }
+      li{
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+
+    <ul>
+      <li id="one">1</li>
+      <li id="two">2</li>
+      <li id="three">3</li>
+      <li id="four">4</li>
+      <li id="five">5</li>
+      <li id="six">6</li>
+      <li id="seven">7</li>
+    </ul>
+
+
+
+
+    <script type="text/javascript">
+
+      function changeColor (color, id) {
+        var el = document.getElementById(id);
+        el.style.color = color;
+      };
+
+      changeColor("yellow", "five");
+      changeColor("purple", "two");
+
+
+
+
+  // //*** Basic Parameters and Arguments:
+  //       //You use Parameters and Arguments instead of the kind of function where you would define variables and write the function out in the function rather than call later with the Arguments.
+  //       // The two items in the () of the get area function are called Parameters
+  //       //Makes code re usable
+  //       function getArea(width, height){
+  //         // console.log(width * height);
+  //         return width * height; //will return you a value and the function stops runnning.
+  //       }
+  //       // The two items in the () of the get area invoking line are called Arguments
+  //       // console.log(getArea(50,100));
+  //
+  //       function timesTen(number){
+  //         alert(number * 10);
+  //       }
+  //
+  //       timesTen(getArea(50, 100)); //the get area part is the number/value that is returned from the function.
+  //
+  //       var timesTenExp = function (number) {
+  //         alert(number * 10);
+  //       }
+        //
+        // var myMethods = {
+        //   //These are methods!
+        //   //First difference is that they sit inside an object ("myMethods")
+        //   //Second difference is the way that it is invoked - dot notation.
+        //   //The following is called an Object Method Pattern
+        //   firstMethodTimesTen: function (number) {
+        //     return number * 10;
+        //   },
+        //   secondMethodTimesTen: function (number) {
+        //     return number * 20;
+        //   }
+        // };
+        //
+        // // myMethods.firstMethodTimesTen(55); // This is how the method function inside an object is invoked.
+        // // You will also need to do a console log to call the result of the method as the line above wont spit anything out at you
+        // //Example on how to view the result of the method by invoking it properly is below:
+        // var result = myMethods.firstMethodTimesTen(55);
+        // console.log(result);
+
+
+    </script>
+  </body>
+</html>
