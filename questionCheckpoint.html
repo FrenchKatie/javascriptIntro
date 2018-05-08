@@ -41,6 +41,7 @@
         padding: 20px;
         margin-top: 20px;
         font-weight: 300;
+        margin: auto;
       }
       .correct{
         background-color: #26de81;
@@ -86,7 +87,7 @@
         <input type="text" onfocus="this.value=''" name="userInput" id="userInput" placeholder="Enter your answer here...">
         <br>
         <h3 id="result"></h3>
-        <button type="button" name="button" class="submitButton" id="submit">Submit Answer</button>
+        <button type="submit" name="button" class="submitButton" id="submit">Submit Answer</button>
         <br>
         <button type="button" class="nextButton hide" id="nextButton" name="button">Next Question!</button>
       </div>
@@ -106,10 +107,7 @@
 
         function checkAnswer(){
             $("#submit").click(function(){
-
-
-          //*** First Stage:
-
+                event.preventDefault();
 
                 //*** Grabbing the users input and creating a variable called getUserInput
                 var getUserInput = document.getElementById("userInput").value;
@@ -133,14 +131,18 @@
                   document.getElementById("userInput").disabled = true;
                   //*** add congratulations text and a correct tick
                   document.getElementById("result").innerHTML = "<i class='far fa-check-circle'></i> Congratulations! You got the right answer.";
-
                 }
 
                 function refreshQuestion(){
                   $('#userInput').val('');
                   document.getElementById("userInput").disabled = false;
                   $('#result').removeClass('correct');
+                  $('#result').removeClass('incorrect');
+                  $('#submit').addClass('show');
+                  $('#submit').addClass('hide');
+                  $('#nextButton').removeClass('show');
                   document.getElementById("result").innerHTML = "";
+
                 }
                 function incorrectAnswer(){
                   //*** grab h3 and add class of incorrect to it
@@ -148,7 +150,7 @@
                   //*** removes the class correct in case they got it right first and then changed it to incorrect
                   $('#result').removeClass('correct');
                   //*** log the h3 in the console to check working and if class was added to html
-                  // console.log(result);
+                  console.log(result);
                   //*** user inner.html to add sorry text and a cross
                   document.getElementById("result").innerHTML = "<i class='far fa-times-circle'></i> Sorry! That's not the right answer.";
                 }
@@ -157,16 +159,16 @@
                 //*** Now run this function:
                 if (getUserInput === "wellington"){
                     correctAnswer();
-                    goNext.onclick = function(){
-                      refreshQuestion();
-                      //*** Putting the question into the html using the questionTitle variable
-                      questionTitle.innerHTML = 'Where is katie from?';
-                      if (getUserInput === "papakura") {
-                        console.log(getUserInput);
-                          correctAnswer();
-                      }else{
-                          incorrectAnswer();
-                      } //end of else
+                    goNext.onSubmit = function(){
+                          refreshQuestion();
+                          //*** Putting the question into the html using the questionTitle variable
+                          questionTitle.innerHTML = 'Where is katie from?';
+                          if (getUserInput === "papakura") {
+                              console.log(getUserInput);
+                              correctAnswer();
+                          }else{
+                              incorrectAnswer();
+                          } //end of else
                     } //emd of on click function
                 }else{
                   incorrectAnswer();
