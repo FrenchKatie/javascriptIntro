@@ -83,11 +83,11 @@
     <h1>Geography Questionnaire</h1>
     <form class="" action="index.html" method="post">
       <div class="question">
-        <h2 class="questionTitle" id="questionTitle"></h2>
+        <h2 class="questionTitle" id="questionTitle">What is the capital of New Zealand?</h2>
         <input type="text" onfocus="this.value=''" name="userInput" id="userInput" placeholder="Enter your answer here...">
         <br>
         <h3 id="result"></h3>
-        <button type="submit" name="button" class="submitButton" id="submit">Submit Answer</button>
+        <button name="button" class="submitButton" id="submit">Submit Answer</button>
         <br>
         <button type="button" class="nextButton hide" id="nextButton" name="button">Next Question!</button>
       </div>
@@ -97,89 +97,98 @@
 
       $(document).ready(function(){
 
+        var questionTitle = document.getElementById("questionTitle").value;//*** Creating a variable that will input html text into the h2 with the id of questionTitle
+        var goNext = document.getElementById("nextButton");//*** Creating a variable for our next button
+        var result = document.getElementById("result"); //Creating a variable called result
+        console.log(questionTitle);
 
-        //*** Creating a variable that will input html text into the h2 with the id of questionTitle
-        var questionTitle = document.getElementById("questionTitle");
-        //***
-        var goNext = document.getElementById('nextButton');
-        //*** Putting the question into the html using the questionTitle variable
-        questionTitle.innerHTML = 'What is the capital of New Zealand?';
+        function correctAnswer(){
+          $("#result").addClass("correct");//*** grab h3 and add class of correct to it
+          $("#result").removeClass("incorrect");//*** removes the class inorrect in case they got it wrong first and then changed it to correct
+          // console.log(result);//*** log the h3 in the console to check working and if class was added to html
+          $("#submit").addClass("hide"); //*** Hide submit Button
+          $("#nextButton").addClass("show");//*** Show next question button
+          document.getElementById("userInput").disabled = true;//*** Disable user input
+          document.getElementById("result").innerHTML = "<i class='far fa-check-circle'></i> Congratulations! You got the right answer.";//*** add congratulations text and a correct tick
+        }
 
-        function checkAnswer(){
+        function refreshQuestion(){
+          $("#userInput").val("");
+          document.getElementById("userInput").disabled = false;
+          $("#result").removeClass("correct");
+          $("#result").removeClass("incorrect");
+          $("#submit").addClass("show");
+          $("#submit").addClass("hide");
+          $("#nextButton").removeClass("show");
+          document.getElementById("result").innerHTML = "";
+        }
+
+        function incorrectAnswer(){
+          $("#result").addClass("incorrect");//*** grab h3 and add class of incorrect to it
+          $("#result").removeClass("correct");//*** removes the class correct in case they got it right first and then changed it to incorrect
+          console.log(result);//*** log the h3 in the console to check working and if class was added to html
+          document.getElementById("result").innerHTML = "<i class='far fa-times-circle'></i> Sorry! That's not the right answer.";//*** user inner.html to add sorry text and a cross
+        }
+
+
             $("#submit").click(function(){
+
+              // //first question
+              // if (questionTitle == "What is the capital of New Zealand?"){
+              //   if (text == 'wellington') {
+              //     correctAnswer();
+              //   } else {
+              //     incorrectAnswer();
+              //   }//end else
+              //
+              //   $('#questionTitle').text('SECOND QUESRTIOONNN');
+              //   $('#button').removeClass('firButton');
+              //   $('#button').addClass('secButton');
+              // }
                 event.preventDefault();
+                var getUserInput = document.getElementById("userInput").value;//*** Grabbing the users input and creating a variable called getUserInput
+                var text = getUserInput.toLowerCase();
+                console.log(getUserInput);//*** Logs the users input in the console
 
-                //*** Grabbing the users input and creating a variable called getUserInput
-                var getUserInput = document.getElementById("userInput").value;
-                //*** Logs the users input in the console
-                console.log(getUserInput);
+                  if(questionTitle == "What is the capital of New Zealand?"){
+                    if (text === "wellington"){
+                      correctAnswer();
+                    }else{
+                      incorrectAnswer();
+                    }
+                    $(questionTitle).text('Where is katie from?')
 
+                  }else if(questionTitle == "Where is katie from?"){
+                    if (text === "papakura"){
+                      correctAnswer();
+                    }else{
+                      incorrectAnswer();
+                    }
+                  }
+                  else{
+                    incorrectAnswer();
+                  }
+                })
 
-
-                function correctAnswer(){
-                  //*** grab h3 and add class of correct to it
-                  $('#result').addClass('correct');
-                  //*** removes the class inorrect in case they got it wrong first and then changed it to correct
-                  $('#result').removeClass('incorrect');
-                  //*** log the h3 in the console to check working and if class was added to html
-                  // console.log(result);
-                  //*** Hide submit Button
-                  $('#submit').addClass('hide');
-                  //*** Show next question button
-                  $('#nextButton').addClass('show');
-                  //*** Disable user input
-                  document.getElementById("userInput").disabled = true;
-                  //*** add congratulations text and a correct tick
-                  document.getElementById("result").innerHTML = "<i class='far fa-check-circle'></i> Congratulations! You got the right answer.";
-                }
-
-                function refreshQuestion(){
-                  $('#userInput').val('');
-                  document.getElementById("userInput").disabled = false;
-                  $('#result').removeClass('correct');
-                  $('#result').removeClass('incorrect');
-                  $('#submit').addClass('show');
-                  $('#submit').addClass('hide');
-                  $('#nextButton').removeClass('show');
-                  document.getElementById("result").innerHTML = "";
-
-                }
-                function incorrectAnswer(){
-                  //*** grab h3 and add class of incorrect to it
-                  $('#result').addClass('incorrect');
-                  //*** removes the class correct in case they got it right first and then changed it to incorrect
-                  $('#result').removeClass('correct');
-                  //*** log the h3 in the console to check working and if class was added to html
-                  console.log(result);
-                  //*** user inner.html to add sorry text and a cross
-                  document.getElementById("result").innerHTML = "<i class='far fa-times-circle'></i> Sorry! That's not the right answer.";
-                }
-
-                //*** If the users input was "wellington" this means that they answered correctly
-                //*** Now run this function:
-                if (getUserInput === "wellington"){
-                    correctAnswer();
-                    goNext.onSubmit = function(){
-                          refreshQuestion();
-                          //*** Putting the question into the html using the questionTitle variable
-                          questionTitle.innerHTML = 'Where is katie from?';
-                          if (getUserInput === "papakura") {
-                              console.log(getUserInput);
-                              correctAnswer();
-                          }else{
-                              incorrectAnswer();
-                          } //end of else
-                    } //emd of on click function
-                }else{
-                  incorrectAnswer();
-                }//*** end else
-
-            }) //*** end of go next click submit function
-
-
-          } //*** end checkAnswer function
-          checkAnswer();
+                // if (text === "wellington"){//*** If the users input was "wellington" or "Wellington" this means that they answered correctly,Now run this function:
+                //
+                //     correctAnswer();
+                //
+                //     $(goNext).click(function(){
+                //       refreshQuestion();
+                //       questionTitle.innerHTML = "Where is katie from?";//*** Putting the question into the html using the questionTitle variable
+                //       if (text === "papakura") {
+                //           console.log(getUserInput);
+                //           correctAnswer();
+                //       }else{
+                //           incorrectAnswer();
+                //       }//end else
+                //     })//end of go next funtion
+                // }else{
+                //   incorrectAnswer();
+                // }//*** end else
       }) //*** end doc ready
+
 
 
     </script>
