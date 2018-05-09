@@ -87,7 +87,7 @@
         <input type="text" onfocus="this.value=''" name="userInput" id="userInput" placeholder="Enter your answer here...">
         <br>
         <h3 id="result"></h3>
-        <button name="button" class="submitButton" id="submit">Submit Answer</button>
+        <button name="button" class="submitButton" id="submit">Go!</button>
         <br>
         <button type="button" class="nextButton hide" id="nextButton" name="button">Next Question!</button>
       </div>
@@ -97,17 +97,17 @@
 
       $(document).ready(function(){
 
-        var questionTitle = document.getElementById("questionTitle").value;//*** Creating a variable that will input html text into the h2 with the id of questionTitle
+        // var questionTitle = document.getElementById("questionTitle").value;//*** Creating a variable that will input html text into the h2 with the id of questionTitle
         var goNext = document.getElementById("nextButton");//*** Creating a variable for our next button
         var result = document.getElementById("result"); //Creating a variable called result
-        console.log(questionTitle);
+        // console.log(questionTitle);
 
         function correctAnswer(){
           $("#result").addClass("correct");//*** grab h3 and add class of correct to it
           $("#result").removeClass("incorrect");//*** removes the class inorrect in case they got it wrong first and then changed it to correct
           // console.log(result);//*** log the h3 in the console to check working and if class was added to html
-          $("#submit").addClass("hide"); //*** Hide submit Button
-          $("#nextButton").addClass("show");//*** Show next question button
+          // $("#submit").addClass("hide"); //*** Hide submit Button
+          // $("#nextButton").addClass("show");//*** Show next question button
           document.getElementById("userInput").disabled = true;//*** Disable user input
           document.getElementById("result").innerHTML = "<i class='far fa-check-circle'></i> Congratulations! You got the right answer.";//*** add congratulations text and a correct tick
         }
@@ -126,67 +126,58 @@
         function incorrectAnswer(){
           $("#result").addClass("incorrect");//*** grab h3 and add class of incorrect to it
           $("#result").removeClass("correct");//*** removes the class correct in case they got it right first and then changed it to incorrect
-          console.log(result);//*** log the h3 in the console to check working and if class was added to html
+          // console.log(result);//*** log the h3 in the console to check working and if class was added to html
           document.getElementById("result").innerHTML = "<i class='far fa-times-circle'></i> Sorry! That's not the right answer.";//*** user inner.html to add sorry text and a cross
         }
 
 
             $("#submit").click(function(){
 
-              // //first question
-              // if (questionTitle == "What is the capital of New Zealand?"){
-              //   if (text == 'wellington') {
-              //     correctAnswer();
-              //   } else {
-              //     incorrectAnswer();
-              //   }//end else
-              //
-              //   $('#questionTitle').text('SECOND QUESRTIOONNN');
-              //   $('#button').removeClass('firButton');
-              //   $('#button').addClass('secButton');
-              // }
                 event.preventDefault();
                 var getUserInput = document.getElementById("userInput").value;//*** Grabbing the users input and creating a variable called getUserInput
-                var text = getUserInput.toLowerCase();
-                console.log(getUserInput);//*** Logs the users input in the console
+                var questionTitle = document.getElementById("questionTitle").innerText; //Queston title with the text
+                var question = document.getElementById("questionTitle") //Question title without the text
+                var text = getUserInput.toLowerCase(); //turns users input into lower case so that it matches the if statements format
+                console.dir(questionTitle);
+                // console.log(getUserInput);//*** Logs the users input in the console
 
                   if(questionTitle == "What is the capital of New Zealand?"){
-                    if (text === "wellington"){
-                      correctAnswer();
-                    }else{
-                      incorrectAnswer();
-                    }
-                    $(questionTitle).text('Where is katie from?')
+                        if (text === "wellington"){
+                            correctAnswer();
+                            //Will show the words next question and hide the input so that you have to go to the next question - you no longer get a second chance
+                            $(question).text('Next Question!')
+                            $("#userInput").hide();
+                        }else{
+                            incorrectAnswer();
+                            //Will show the words next question and hide the input so that you have to go to the next question - you no longer get a second chance
+                            $(question).text('Next Question!')
+                            $("#userInput").hide();
+                        }
+
+                  } else if(questionTitle == 'Next Question!') {
+
+                        $("#userInput").show();
+                        $(question).text("Where is katie from?");
+                        refreshQuestion();
 
                   }else if(questionTitle == "Where is katie from?"){
-                    if (text === "papakura"){
-                      correctAnswer();
-                    }else{
-                      incorrectAnswer();
-                    }
+                        if (text === "papakura"){
+
+                          correctAnswer();
+                          $(question).text('Next Question!')
+                          $("#userInput").hide();
+                        }else{
+                          incorrectAnswer();
+                          $(question).text('Next Question!')
+                          $("#userInput").hide();
+                        }
                   }
-                  else{
-                    incorrectAnswer();
+                  else{ //if none of these conditions apply then render this
+                        incorrectAnswer();
                   }
                 })
 
-                // if (text === "wellington"){//*** If the users input was "wellington" or "Wellington" this means that they answered correctly,Now run this function:
-                //
-                //     correctAnswer();
-                //
-                //     $(goNext).click(function(){
-                //       refreshQuestion();
-                //       questionTitle.innerHTML = "Where is katie from?";//*** Putting the question into the html using the questionTitle variable
-                //       if (text === "papakura") {
-                //           console.log(getUserInput);
-                //           correctAnswer();
-                //       }else{
-                //           incorrectAnswer();
-                //       }//end else
-                //     })//end of go next funtion
-                // }else{
-                //   incorrectAnswer();
-                // }//*** end else
+              
       }) //*** end doc ready
 
 
