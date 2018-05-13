@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // //This is an immediately invoked function expression
+        // (function(){
+        //   //vars are placed at the top of the script
+        //   var a = "something";
+        //   var b = "something else";
+        //
+        //   //a basic function declaration
+        //   function shout() {
+        //     alert(a);
+        //   }
+        //
+        //   //another basic function declaration
+        //   function shoutAgain () {
+        //     alert(b);
+        //   }
+        //
+        //   //invoking the functions
+        //   shout();
+        //   shoutAgain();
+        // })(); //essentially the same as document.ready - wraps your code up.
+        (function() {
+
+          var firstName = "katie ";
+          var lastName = "french";
+          var age;
+
+          function shoutName(){
+              alert(firstName + lastName);
+          }
+          shoutName();
+          
+        }());
+    </script>
+</body>
+</html>
