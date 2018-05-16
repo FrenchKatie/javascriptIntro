@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+      (function() {
+          //get the body with everything in it
+          var body = document.querySelector("body");
+
+          //function to make new element, has parameters.
+          function makeNewElement(element, elementText, elementStyle) {
+              //creates new element type - P, h1, h4, whatever
+              var newElement = document.createElement(element);
+              //creates the text that goes inside the element tags
+              newElement.innerText = elementText;
+              //where the new element goes
+              body.after(newElement);
+              //setting styling for the new attribute
+              newElement.setAttribute("style", elementStyle);
+              //checking it out in the console
+              console.dir(newElement);
+          }
+          //running the function and adding in the arguments
+          makeNewElement("p", "I tried to find the rhythm of the world where I used to live. I followed the current. I was silent, attentive, I made a concious effort to smile, nod, stand, and perform the millions of gestures that constitute life on earth.", "font-family: helvetica; margin:30px; padding:20px; font-size:30px; border: 2px #81ecec solid;");
+      }());
+  </script>
+</body>
+</html>
