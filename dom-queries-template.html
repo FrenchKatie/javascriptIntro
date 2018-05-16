@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		iframe {
+			display: none;
+		}
+
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+</head>
+<body>
+	<h1>Good Day</h1>
+	<ul id="listParent">
+		<li class="a-class">1</li>
+		<li class="a-class">2</li>
+		<li class="a-class">3</li>
+		<li class="a-class">4</li>
+		<li class="a-class">5</li>
+	</ul>
+	<p class="a-class">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, rem aut pariatur corporis, dolorum, libero autem deleniti porro magnam laborum accusamus et fugiat! Placeat quaerat nulla eos quas, quia libero.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quod, totam vel hic aperiam laborum minus non vitae rerum culpa, voluptas obcaecati alias itaque, impedit quis harum nobis ea nam.</p>
+	<p class="question">"How was Tuesday's lesson?"</p>
+	<iframe src="https://giphy.com/embed/Wg6sfwn9f0sJq" width="427" height="480" frameBorder="0" class="giphy-embed answer" allFullScreen></iframe>
+	<h4 class="a-class"></h4>
+	<script>
+		(function(){
+				//getting the body with everything in it
+				var body = document.querySelector("body");
+				//Cbodying these elements from the body - these are all children of the body
+				var list = body.children[1];
+				var iframe = body.children[5];
+				var question = body.children[4];
+
+				// Using parameters: Alows you to reuse.
+				// The argument is: (element, property, value)
+				function changeStyle (element, property, value) {
+						element.style[property] = value;
+				}
+
+				changeStyle(question, "fontSize", "88px");
+				changeStyle(list, 'display', 'none');
+				changeStyle(iframe, 'display', 'block');
+
+				//Inserting new HTML and CSS with JS
+				var p = document.createElement("p");
+				p.innerText = "This is brand new and made with JS!";
+				body.after(p);
+				p.setAttribute("style", "font-size: 100px; color:blue;");
+
+
+				function createElement (newElementType, newTextContent, newStyling) {
+					var newElement = document.createElement(newElementType);
+					newElement.innerText = newTextContent;
+					body.after(newElement);
+					newElement.setAttribute("style", newStyling);
+				}
+				createElement("p", "I made this new element using a function with parameters and arguments",  "font-size: 80px; color:pink;");
+
+
+
+		})();
+	</script>
+</body>
+</html>
