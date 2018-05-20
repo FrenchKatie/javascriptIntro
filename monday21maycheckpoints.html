@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    ul{
+      font-size: 4em;
+      list-style: none;
+      font-family: helvetica;
+      text-align: right;
+      margin-right: 50px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>ONE</li>
+    <li>TWO</li>
+    <li>THREE</li>
+    <li>FOUR</li>
+    <li>FIVE</li>
+    <li>SIX</li>
+    <li>SEVEN</li>
+  </ul>
+  <script type="text/javascript">
+      (function() {
+          var body = document.querySelector("body");
+          var list = body.children[0];
+
+          console.dir(list);
+
+          for (var i = 0; i<7; i++) {
+            list[i].style.color = 'pink';
+          }
+      }());
+  </script>
+</body>
+</html>
