@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Introduction to Vue.js</title>
+  <style>
+    body{
+      font-family: helvetica;
+      font-size: 3em;
+      font-weight: 100;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div id="app">
+    {{ message }} <!-- display message -->
+  </div>
+
+
+  <div id="app-2">
+  <span v-bind:title="message"> <!-- bind message to hover -->
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+
+
+<div id="app-3">
+  <span v-if="seen">Now you see me</span> <!-- if -->
+</div>
+
+
+<div id="app-4">
+  <ol>
+     <li v-for="todo in todos"> <!-- for loop -->
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button> <!-- clicks btn and reverses message -->
+</div>
+
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message"> <!-- inserts users input into the dom as the user is writing it -->
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+// https://nativescript-vue.org/ <-- use this
+
+var app = new Vue({
+	el: "#app",
+	data: {
+		message: "Hello Vue!" //display this message
+	}
+});
+
+var app2 = new Vue({
+	el: "#app-2",
+	data: {
+		message: "You loaded this page on " + new Date().toLocaleString() //on hover show current date
+	}
+});
+
+var app3 = new Vue({
+	el: "#app-3",
+	data: {
+		seen: true //html text will be hidden if false
+	}
+});
+
+var app4 = new Vue({
+	el: "#app-4",
+	data: {
+		todos: [
+			//loops through this array & show in numbered list
+			{ text: "Learn JavaScript" },
+			{ text: "Learn Vue" },
+			{ text: "Build something awesome" }
+		]
+	}
+});
+
+var app5 = new Vue({
+	el: "#app-5",
+	data: {
+		message: "Hello Vue.js!"
+	},
+	methods: {
+		reverseMessage: function() {
+			//flip message backwards
+			this.message = this.message
+				.split("")
+				.reverse()
+				.join("");
+		}
+	}
+});
+
+var app6 = new Vue({
+	el: "#app-6",
+	data: {
+		message: "Hello Vue!" //inserts users input into the dom as the user is typing
+	}
+});
+</script>
+</body>
+</html>
